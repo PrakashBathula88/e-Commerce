@@ -52,6 +52,7 @@ function Signin() {
       })
       .then((data) => {
         authCtx.Login(data.idToken);
+        navigate('/')
         setTimeout(() => {
           authCtx.RemoveAutologout();
           navigate("/signin");
