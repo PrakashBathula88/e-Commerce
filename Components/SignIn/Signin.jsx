@@ -1,9 +1,8 @@
 import React, { useState, useRef, useContext } from "react";
 import "../SignIn/Sign.css";
-
-import { useNavigate, } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import Authcontext from "../LoginProvider/Loginprovider";
+
 function Signin() {
   const navigate = useNavigate();
   const [islogin, setislogin] = useState(true);
@@ -41,25 +40,24 @@ function Signin() {
     })
       .then((res) => {
         setloading(false);
-        if (!res.ok) {
+        if (res.ok) {
+          return res.json();
         } else {
           return res.json().then((data) => {
             const errormessage = "Authentication failed";
-            // if (data && data.error && data.error.message) {
-            //   errormessage = data.error.message;
-            // }
 
             throw new Error(errormessage);
           });
         }
       })
       .then((data) => {
-        navigate("/");
         authCtx.Login(data.idToken);
+        setTimeout(() => {
+          authCtx.RemoveAutologout();
+          navigate("/signin");
+        }, 30000);
       })
-      .catch((err) => {
-        // alert(err.message);
-      });
+      .catch((err) => {});
   };
 
   return (
