@@ -4,14 +4,14 @@ import { IoMdCart } from "react-icons/io";
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { useProductContext } from "../AddCart/CartProviders";
 import Singlepage from "../Singlepage/Singlepage";
-import { Link } from "react-router-dom";
+import { Link,Navigate} from "react-router-dom";
 
 const Dummy = () => {
   const { AddTocart } = useProductContext();
   const [phones, setPhones] = useState([]);
   const [Loading, SetLoading] = useState(true);
   const [error, SetError] = useState(null);
-
+    
   useEffect(() => {
     const FetchingProducts = async () => {
       try {
