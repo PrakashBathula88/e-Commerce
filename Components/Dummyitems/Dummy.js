@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Dummyitems/Phones.css";
 import { IoMdCart } from "react-icons/io";
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { useProductContext } from "../AddCart/CartProviders";
 import Singlepage from "../Singlepage/Singlepage";
-import { Link,Navigate} from "react-router-dom";
-
+import { Link} from "react-router-dom";
+import Authcontext from "../LoginProvider/Loginprovider";
 const Dummy = () => {
   const { AddTocart } = useProductContext();
   const [phones, setPhones] = useState([]);
   const [Loading, SetLoading] = useState(true);
   const [error, SetError] = useState(null);
+ const AuthCtx = useContext(Authcontext);
     
   useEffect(() => {
     const FetchingProducts = async () => {

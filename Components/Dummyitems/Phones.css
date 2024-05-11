@@ -30,3 +30,9 @@
 .All_products span{
     cursor: pointer;
 }
+.Cart_logo{
+    padding: 10px;
+    margin-bottom:10px;
+    font-size: larger;
+    cursor: pointer;
+}

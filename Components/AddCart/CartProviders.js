@@ -1,49 +1,51 @@
-import React, { useContext, createContext, useState, useEffect } from "react";
+
+import React, { useState, createContext, useContext, useEffect } from "react";
 import axios from "axios";
+
+import Authcontext from "../LoginProvider/Loginprovider";
 const ProductContext = createContext();
 
 export const useProductContext = () => useContext(ProductContext);
 
 export const ProductProvider = ({ children }) => {
-  const [CartItems, SetCartItems] = useState([]);
-  const [Load, SetLoad] = useState(false);
-  const [error, SetError] = useState(null);
+  const [CartItems, setCartItems] = useState([]);
+  const [load, setLoad] = useState(false);
+  const [error, setError] = useState(null);
+  const { token } = useContext(Authcontext); 
 
-  const AddTocart = (ListItems) => {
-    SetCartItems([...CartItems, ListItems]);
-    axios
-      .post(
-        "https://commerce-24c08-default-rtdb.firebaseio.com/cart.json",
-        ListItems
-      )
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const AddTocart = (listItem) => {
+    setCartItems([...CartItems, listItem]);
+    if (token) {
+      axios.post(`https://crudcrud.com/api/262397006ad44ab8bc3649ba4c629827/cart/${token}`, listItem)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   };
 
   useEffect(() => {
-    const FetchData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.post(
-          "https://commerce-24c08-default-rtdb.firebaseio.com/cart.json"
-        );
-        SetCartItems(response.data);
-        SetLoad(true);
+        if (token) {
+          const response = await axios.get(`https://crudcrud.com/api/262397006ad44ab8bc3649ba4c629827/cart/${token}`);
+          setCartItems(response.data);
+          setLoad(true);
+        }
       } catch (error) {
-        SetError("DATA ERROR");
+        setError("DATA ERROR");
         console.error(error);
       }
     };
-    FetchData();
-  }, []);
+    fetchData();
+  }, [token]);
 
   const HandleRemove = (index) => {
-    const NewItems = [...CartItems];
-    NewItems.splice(index, 1);
-    SetCartItems(NewItems);
+    const newItems = [...CartItems];
+    newItems.splice(index, 1);
+    setCartItems(newItems);
   };
 
   return (

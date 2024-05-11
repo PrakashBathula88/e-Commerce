@@ -16,10 +16,10 @@
 }
 
 .Allnavitems {
-  width: 80%;
+  width: 40%;
   display: flex;
   justify-content: space-around;
-
+ margin-left: 680px;
 }
 a {
   text-decoration: none;

@@ -60,6 +60,7 @@ const Nav = () => {
                   color: "blue",
                   borderRadius: "5px",
                   cursor: "pointer",
+                  
                 }}
               >
                 Logout
