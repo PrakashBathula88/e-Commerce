@@ -97,7 +97,7 @@ const Dummy = () => {
                 </span>
                 <span className="PRODUCT">
                   <h1>{product.title}</h1>
-
+     
                   <span className="price_logo">
                     <LiaRupeeSignSolid />
                     {product.price}

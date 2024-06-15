@@ -33,14 +33,7 @@ const Profile = () => {
 
   return (
     <form onSubmit={SubmitHandler}>
-      <div
-        style={{
-          backgroundColor: "red",
-          position: "fixed",
-          height: "110%",
-          width: "100vw",
-        }}
-      >
+      <div>
         <div className="profile_page">
           <h1> Profile</h1>
           <h3>New Password</h3>

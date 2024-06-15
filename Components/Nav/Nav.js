@@ -38,13 +38,13 @@ const Nav = () => {
 
           {!isLoggedin && (
             <li>
-              <Link to="/signin">Login</Link>
+              <Link to="/signin">LOGIN</Link>
             </li>
           )}
 
           {isLoggedin && (
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/profile">PROFILE</Link>
             </li>
           )}
 

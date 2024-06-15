@@ -56,7 +56,7 @@ function Signin() {
         setTimeout(() => {
           authCtx.RemoveAutologout();
           navigate("/signin");
-        }, 30000);
+        }, 300000);
       })
       .catch((err) => {});
   };
