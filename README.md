@@ -1,3 +1,4 @@
+<div style="background-color: #d0f0c0; padding: 20px;">
 # E-Commerce Website
 
 ## Tech Stack
@@ -47,3 +48,4 @@ Screenshots of the Home page on different devices are given below:
 ## Contributors
 
 - Bathula Prakash: [LinkedIn](https://www.linkedin.com/in/bathulaprakash/) | [GitHub](https://github.com/PrakashBathula88)
+</div>
